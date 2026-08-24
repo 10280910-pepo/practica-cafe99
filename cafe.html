@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Café VillaNueva</title>
+
+    <!-- Fuentes elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f8f3eb;
+            color: #33251d;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 85px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 8%;
+
+            background: #fffaf3;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            z-index: 1000;
+
+            box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: #4b3024;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            display: block;
+
+            font-family: "Great Vibes", cursive;
+
+            font-size: 22px;
+
+            color: #b18a5b;
+
+            margin-bottom: -10px;
+        }
+
+
+        /* MENÚ */
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4b3024;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #b18a5b;
+        }
+
+
+        /* =========================
+           INICIO
+        ========================= */
+
+        .hero {
+            height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 10%;
+
+            background:
+                linear-gradient(
+                    rgba(37, 24, 17, 0.55),
+                    rgba(37, 24, 17, 0.55)
+                ),
+
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .hero-text {
+            max-width: 650px;
+            color: white;
+        }
+
+        .subtitulo {
+            font-size: 13px;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: #d9b681;
+        }
+
+        .hero h1 {
+            font-family: "Great Vibes", cursive;
+
+            font-size: clamp(60px, 9vw, 120px);
+
+            font-weight: 400;
+
+            line-height: 1;
+        }
+
+        .hero-text > p:not(.subtitulo) {
+            margin-top: 25px;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            max-width: 500px;
+        }
+
+
+        /* BOTÓN */
+
+        .boton {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 14px 30px;
+
+            border: 1px solid #d9b681;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #b18a5b;
+
+            border-color: #b18a5b;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           TÍTULOS
+        ========================= */
+
+        .titulo {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .titulo p {
+            color: #b18a5b;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 8px;
+        }
+
+        .titulo h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 50px;
+
+            font-weight: 600;
+
+            color: #3d2920;
+        }
+
+
+        /* =========================
+           MENÚ
+        ========================= */
+
+        .menu {
+            padding: 110px 8%;
+        }
+
+        .menu-contenedor {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+
+        /* PRODUCTOS */
+
+        .producto {
+            background: #fffaf3;
+
+            box-shadow: 0 10px 30px rgba(61, 41, 32, 0.08);
+
+            transition: 0.4s;
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+
+            box-shadow: 0 20px 40px rgba(61, 41, 32, 0.15);
+        }
+
+
+        /* IMÁGENES */
+
+        .producto-img {
+            height: 250px;
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .cafe1 {
+            background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .cafe2 {
+            background-image: url("https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .cafe3 {
+            background-image: url("https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .cafe4 {
+            background-image: url("https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .postre1 {
+            background-image: url("https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .postre2 {
+            background-image: url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80");
+        }
+
+
+        /* INFORMACIÓN */
+
+        .producto-info {
+            padding: 25px;
+        }
+
+        .producto-info h3 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 28px;
+
+            color: #4b3024;
+
+            margin-bottom: 8px;
+        }
+
+        .producto-info p {
+            color: #75655b;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 15px;
+        }
+
+        .producto-info span {
+            color: #b18a5b;
+
+            font-size: 18px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           NOSOTROS
+        ========================= */
+
+        .nosotros {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            min-height: 650px;
+
+            background: #3d2920;
+
+            color: white;
+        }
+
+        .nosotros-img {
+            background:
+                url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nosotros-text {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 10%;
+        }
+
+        .nosotros-text h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 55px;
+
+            font-weight: 500;
+
+            margin-bottom: 25px;
+        }
+
+        .nosotros-text p:not(.subtitulo) {
+            color: #ddd0c6;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            margin-bottom: 15px;
+        }
+
+        .nosotros-text .boton {
+            align-self: flex-start;
+        }
+
+
+        /* =========================
+           FRASE
+        ========================= */
+
+        .frase {
+            min-height: 350px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background: #efe4d5;
+        }
+
+        .frase p {
+            font-family: "Great Vibes", cursive;
+
+            font-size: 55px;
+
+            color: #4b3024;
+        }
+
+        .frase span {
+            display: block;
+
+            margin-top: 15px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            color: #b18a5b;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contacto {
+            padding: 110px 8%;
+        }
+
+        .contacto-contenedor {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .contacto-card {
+            text-align: center;
+
+            background: #fffaf3;
+
+            padding: 40px 20px;
+
+            border: 1px solid #e6d8c7;
+
+            transition: 0.3s;
+        }
+
+        .contacto-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #b18a5b;
+        }
+
+        .contacto-card h3 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 27px;
+
+            margin-bottom: 12px;
+
+            color: #4b3024;
+        }
+
+        .contacto-card p {
+            font-size: 13px;
+
+            color: #75655b;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #261913;
+
+            color: #cdbfb4;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+        footer .logo {
+            color: white;
+
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .menu-contenedor {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contacto-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .nosotros {
+                grid-template-columns: 1fr;
+            }
+
+            .nosotros-img {
+                min-height: 400px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                height: auto;
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 0 8%;
+
+                text-align: center;
+
+                justify-content: center;
+            }
+
+            .hero-text > p:not(.subtitulo) {
+                font-size: 14px;
+            }
+
+            .menu-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo h2 {
+                font-size: 42px;
+            }
+
+            .frase p {
+                font-size: 40px;
+            }
+
+            .nosotros-text h2 {
+                font-size: 42px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            <span>Café</span>
+            VillaNueva
+        </div>
+
+        <nav>
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#menu">Menú</a>
+
+            <a href="#nosotros">Nosotros</a>
+
+            <a href="#contacto">Contacto</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= INICIO ================= -->
+
+    <section id="inicio" class="hero">
+
+        <div class="hero-text">
+
+            <p class="subtitulo">
+                BIENVENIDOS A
+            </p>
+
+            <h1>
+                Café VillaNueva
+            </h1>
+
+            <p>
+                Un lugar donde el aroma del café,
+                la elegancia y los buenos momentos
+                se encuentran.
+            </p>
+
+            <a href="#menu" class="boton">
+                Ver nuestro menú
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MENÚ ================= -->
+
+    <section id="menu" class="menu">
+
+        <div class="titulo">
+
+            <p>
+                DESCUBRE NUESTROS SABORES
+            </p>
+
+            <h2>
+                Nuestro Menú
+            </h2>
+
+        </div>
+
+
+        <div class="menu-contenedor">
+
+
+            <!-- CAFÉ AMERICANO -->
+
+            <div class="producto">
+
+                <div class="producto-img cafe1"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Café Americano
+                    </h3>
+
+                    <p>
+                        Café intenso y aromático,
+                        preparado con granos seleccionados.
+                    </p>
+
+                    <span>
+                        $2.50
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAPPUCCINO -->
+
+            <div class="producto">
+
+                <div class="producto-img cafe2"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Cappuccino
+                    </h3>
+
+                    <p>
+                        Café espresso acompañado
+                        de leche cremosa y espuma.
+                    </p>
+
+                    <span>
+                        $3.25
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LATTE -->
+
+            <div class="producto">
+
+                <div class="producto-img cafe3"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Café Latte
+                    </h3>
+
+                    <p>
+                        Suave combinación de espresso
+                        y leche vaporizada.
+                    </p>
+
+                    <span>
+                        $3.50
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHOCOLATE -->
+
+            <div class="producto">
+
+                <div class="producto-img cafe4"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Chocolate Caliente
+                    </h3>
+
+                    <p>
+                        Chocolate cremoso con un toque
+                        dulce y delicioso.
+                    </p>
+
+                    <span>
+                        $3.00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHEESECAKE -->
+
+            <div class="producto">
+
+                <div class="producto-img postre1"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Cheesecake
+                    </h3>
+
+                    <p>
+                        Cremoso cheesecake acompañado
+                        de frutos rojos.
+                    </p>
+
+                    <span>
+                        $4.00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASTEL -->
+
+            <div class="producto">
+
+                <div class="producto-img postre2"></div>
+
+                <div class="producto-info">
+
+                    <h3>
+                        Pastel de Chocolate
+                    </h3>
+
+                    <p>
+                        Delicioso pastel de chocolate
+                        con cobertura cremosa.
+                    </p>
+
+                    <span>
+                        $3.75
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= NOSOTROS ================= -->
+
+    <section id="nosotros" class="nosotros">
+
+        <div class="nosotros-img"></div>
+
+
+        <div class="nosotros-text">
+
+            <p class="subtitulo">
+                CONOCE NUESTRA HISTORIA
+            </p>
+
+            <h2>
+                Más que una cafetería
+            </h2>
+
+            <p>
+                En Café VillaNueva creemos que una taza
+                de café puede convertir un momento común
+                en un recuerdo especial.
+            </p>
+
+            <p>
+                Nuestro espacio fue creado para disfrutar
+                de café de calidad, deliciosos postres y
+                una experiencia tranquila y elegante.
+            </p>
+
+            <a href="#contacto" class="boton">
+                Visítanos
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FRASE ================= -->
+
+    <section class="frase">
+
+        <div>
+
+            <p>
+                "Cada taza cuenta una historia."
+            </p>
+
+            <span>
+                — Café VillaNueva —
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CONTACTO ================= -->
+
+    <section id="contacto" class="contacto">
+
+        <div class="titulo">
+
+            <p>
+                ESTAMOS PARA TI
+            </p>
+
+            <h2>
+                Visítanos
+            </h2>
+
+        </div>
+
+
+        <div class="contacto-contenedor">
+
+
+            <div class="contacto-card">
+
+                <h3>
+                    📍 Ubicación
+                </h3>
+
+                <p>
+                    San Salvador, El Salvador
+                </p>
+
+            </div>
+
+
+
+            <div class="contacto-card">
+
+                <h3>
+                    🕐 Horarios
+                </h3>
+
+                <p>
+                    Lunes - Sábado
+                </p>
+
+                <p>
+                    8:00 AM - 8:00 PM
+                </p>
+
+            </div>
+
+
+
+            <div class="contacto-card">
+
+                <h3>
+                    📞 Contacto
+                </h3>
+
+                <p>
+                    +503 7000-0000
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="logo">
+
+            <span>
+                Café
+            </span>
+
+            VillaNueva
+
+        </div>
+
+        <p>
+            © 2026 Café VillaNueva · Todos los derechos reservados
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
